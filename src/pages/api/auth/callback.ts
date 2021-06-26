@@ -4,13 +4,9 @@ import qs from 'qs';
 import { validateToken } from 'utils/csrfToken';
 import type { SpotifyAuthResponse } from 'utils/spotify';
 
-type Data = {
-  name: string;
-};
-
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>,
+  res: NextApiResponse,
 ) {
   const { state, error, code } = req.query;
 

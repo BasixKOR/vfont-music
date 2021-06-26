@@ -1,13 +1,17 @@
 import { nanoid } from "nanoid";
+import jwt from 'jsonwebtoken';
 
-const tokens = new Set<string>();
 
 export function generateToken() {
 	const token = nanoid();
-	tokens.add(token);
-	return token;
+	return jwt.sign(token, process.env.JWT_SECRET!);
 }
 
 export function validateToken(token: string): boolean {
-	return tokens.delete(token);
+	try {
+		jwt.verify(token, process.env.JWT_SECRET!)
+		return true;
+	} catch {
+		return false;
+	}
 }

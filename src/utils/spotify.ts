@@ -1,3 +1,4 @@
+import axios from 'axios';
 import qs from 'qs'
 
 export function getSpotifyLoginUrl(token: string): string {
@@ -8,10 +9,14 @@ export function getSpotifyLoginUrl(token: string): string {
     client_id: process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID,
     redirect_uri,
     state: token,
-    scope: 'user-read-playback-state'
+    scope: 'streaming user-read-email user-read-private'
   })
 
   return `https://accounts.spotify.com/authorize?${params}`;
+}
+
+export function refreshSpotifyToken(refreshToken: string): Promise<string> {
+  return axios.post('/api/auth/refresh', { refreshToken }).then(res => res.data.access_token)
 }
 
 export interface SpotifyAuthResponse {

@@ -55,7 +55,7 @@ interface WebPlaybackError {
   message: string;
 }
 
-type Events = {
+type SpotifyPlayerEvents = {
   ready: WebPlaybackPlayer;
   not_ready: WebPlaybackPlayer;
   player_state_changed: WebPlaybackState;
@@ -72,19 +72,20 @@ interface GlobalEventHandlers {
 declare namespace Spotify {
   declare class Player {
     constructor(params: SpotifyPlayerInitializer);
+    _options: SpotifyPlayerInitializer;
     connect: () => Promise<boolean>;
     disconnect: () => void;
-    addListener: <E extends keyof Events>(
+    addListener: <E extends keyof SpotifyPlayerEvents>(
       event: E,
-      cb: (obj: Events[E]) => void,
+      cb: (obj: SpotifyPlayerEvents[E]) => void,
     ) => boolean;
-    on: <E extends keyof Events>(
+    on: <E extends keyof SpotifyPlayerEvents>(
       event: E,
-      cb: (obj: Events[E]) => void,
+      cb: (obj: SpotifyPlayerEvents[E]) => void,
     ) => boolean;
-    removeListener: <E extends keyof Events>(
+    removeListener: <E extends keyof SpotifyPlayerEvents>(
       event: E,
-      cb?: (obj: Events[E]) => void,
+      cb?: (obj: SpotifyPlayerEvents[E]) => void,
     ) => boolean;
     getCurrentState: () => Promise<WebPlaybackState | null>;
     setName: () => Promise<void>;

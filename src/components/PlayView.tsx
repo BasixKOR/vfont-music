@@ -21,7 +21,7 @@ export default function PlayView({ state, player }: PlayViewProps) {
           player={player}
         />
       )}
-      <p className="text-4xl text-center" ref={ref}></p>
+      <p className="text-9xl text-center transition-all" ref={ref}>{state.track_window.current_track.name}</p>
     </main>
   );
 }

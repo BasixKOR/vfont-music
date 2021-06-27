@@ -98,5 +98,6 @@ export function getCurrentLoudness(
     start,
     duration,
   }));
-  return source[binarySearchLoudness(source, position / 1000)].loudness_max;
+  const loudness = source[binarySearchLoudness(source, position / 1000)].loudness_max;
+  return 1 - (Math.min(Math.max(loudness, -35), 0) / -35); // https://medium.com/swlh/creating-waveforms-out-of-spotify-tracks-b22030dd442b
 }

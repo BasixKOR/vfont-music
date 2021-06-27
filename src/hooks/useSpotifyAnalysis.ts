@@ -18,8 +18,7 @@ export default function useSpotifyAnalysis(
 				const state = await player.current?.getCurrentState();
 				if(!state) return requestAnimationFrame(rafHandle);
         const loudness = getCurrentLoudness(analysis, state.position);
-        // ref.current?.style?.setProperty('font-variation-settings', `'wght' ${lo}`)
-        ref.current && (ref.current.textContent = String(loudness));
+        ref.current?.style?.setProperty('font-variation-settings', `'wght' ${loudness * 800 + 100}`)
         requestAnimationFrame(rafHandle);
       }
       requestAnimationFrame(rafHandle);

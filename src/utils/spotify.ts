@@ -19,6 +19,12 @@ export function refreshSpotifyToken(refreshToken: string): Promise<string> {
   return axios.post('/api/auth/refresh', { refreshToken }).then(res => res.data.access_token)
 }
 
+export function getTokenFromPlayer(player: Spotify.Player): Promise<string> {
+  return new Promise(res => {
+    player._options.getOAuthToken(res)
+  }) 
+}
+
 export interface SpotifyAuthResponse {
   access_token: string;
   token_type: 'Bearer';

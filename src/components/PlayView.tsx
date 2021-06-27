@@ -18,6 +18,7 @@ export default function PlayView({ state, player }: PlayViewProps) {
       {state && (
         <TrackInfo
           currentTrack={state.track_window.current_track}
+          paused={state.paused}
           player={player}
         />
       )}

@@ -24,7 +24,7 @@ export default async function handler(
   const params = qs.stringify({
     grant_type: 'authorization_code',
     code,
-    redirect_uri: `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/auth/callback`,
+    redirect_uri: `${process.env.NEXT_PUBLIC_URL}/api/auth/callback`,
     client_id: process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID,
     client_secret: process.env.SPOTIFY_CLIENT_SECRET,
   });

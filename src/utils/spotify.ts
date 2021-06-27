@@ -2,7 +2,7 @@ import axios from 'axios';
 import qs from 'qs';
 
 export function getSpotifyLoginUrl(token: string): string {
-  const redirect_uri = `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/auth/callback`;
+  const redirect_uri = `${process.env.NEXT_PUBLIC_URL}/api/auth/callback`;
 
   const params = qs.stringify({
     response_type: 'code',

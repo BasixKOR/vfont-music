@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@wasm-tool/wasm-pack-plugin": "^1.4.0",
     "axios": "^0.21.1",
     "faunadb": "^4.3.0",
     "jsonwebtoken": "^8.5.1",
